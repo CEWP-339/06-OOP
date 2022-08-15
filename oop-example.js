@@ -1,43 +1,65 @@
 class Item {
 
-    #name = "default name";
-    #description = "default description";
-    static type = "Book";
+    name = "default name";
+    description = "default description";
 
-    #sayHello (name) {
+    sayHello (name) {
          console.log(`Hello, ${name}`);
     }
 
-    get getName () {
-        return this.#name;
+    getListingDescription () {
+        return this.description;
     }
 
-    set setName (name) {
-        this.#name = name;
-    }
+    // get getName () {
+    //     return this.#name;
+    // }
 
-    get getDescription () {
-        return this.#description;
-    }
+    // set setName (name) {
+    //     this.#name = name;
+    // }
 
-    set setDescription (description) {
-        this.#description = description;
-    }
+    // get getDescription () {
+    //     return this.#description;
+    // }
+
+    // set setDescription (description) {
+    //     this.#description = description;
+    // }
 
 }
+
+class Book extends Item {
+    author;
+
+    getListingDescription () {
+        return this.description + " by " + this.author;
+    }
+}
+
+
+
 
 item1 = new Item();
 // item1.setName = "Chandler";
 // console.log(item1.getName);
+console.log(item1.name);
 // item1.setDescription = "I am Item 1!";
 // console.log(item1.getDescription);
-console.log("static property for Item 1: ", Item.type);
-console.log("item1: ", item1);
 
 item2 = new Item();
 // item2.setName = "Monica";
 // console.log(item2.getName);
+console.log(item2.name);
 // item2.setDescription = "I am Item 2!";
-// console.log(item2.getDescription);
-console.log("static property for Item 2: ", Item.type);
-console.log("item2: ", item2);
+console.log(item2.getListingDescription()); //3
+
+book1 = new Book();
+console.log(book1.name);
+book1.name = "Aaron";
+book1.description = "This is a book called Aaron";
+book1.author = "Shreya";
+console.log(book1);
+book1.sayHello(book1.name); //1
+console.log(book1.getListingDescription()); //2
+
